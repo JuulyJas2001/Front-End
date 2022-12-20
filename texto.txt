@@ -1,0 +1,77 @@
+El siguiente proyecto tiene como finalidad la práctica e introduccion a DOM.
+
+//Accedemos a las etiquetas de igual manera que en Css
+//document.querySelector("h3")
+//console.log(document.querySelector("h3"))
+//console.log(document.querySelector(".h3-danger"))
+//console.log(document.querySelector("#parrafo"))
+
+//Otra manera de acceder al ID. Con este método solo buscamos el ID
+
+//console.log(document.getElementById("parrafo"))
+
+//Para acceder a todas las clases utilizamos querySelectorAll
+
+//console.log(document.querySelectorAll(".h3-danger"))
+
+//const parrafo= document.querySelector("#parrafo")
+//parrafo.textContent= "texto desde Js"
+//parrafo.innerHTML= "texto con html"
+//parrafo.classList.add("h3-danger", "my-2")
+
+//Crear un elemento
+
+//Capturamos la lista
+const lista= document.getElementById("lista")
+//console.log(lista)
+
+const arrayElement= ["primer elemento","segundo elemento","tercer elemento"]
+
+//arrayElement.forEach( item => {
+//Creamos la etiqueta <li> desde nuestro archivo Js
+//const li= document.createElement("li")
+//li.textContent= item
+//lista.appendChild(li)
+//})
+
+//Ahora agregamos un elemento a dicha lista
+
+//Cuando hay muchos elementos tambien podemos:
+----------No fumciona no se porqué-------------
+arrayElement.forEach( item => {
+    lista.innerHTML += "<li> ${ item } </li>;"
+})
+
+Para evitar el reflow utilizaremos Fragment
+
+//Capturamos la lista
+const lista= document.getElementById("lista")
+//console.log(lista)
+
+const arrayItem= ["primer elemento","segundo elemento","tercer elemento"]
+
+//arrayElement.forEach( item => {
+//Creamos la etiqueta <li> desde nuestro archivo Js
+//const li= document.createElement("li")
+//li.textContent= item
+//lista.appendChild(li)
+//})
+
+//Ahora agregamos un elemento a dicha lista
+
+//Cuando hay muchos elementos tambien podemos:
+
+//FRagment 
+
+const fragment= document.createDocumentFragment()
+
+arrayItem.forEach( item =>{
+    const li= document.createElement("li")
+    li.textContent= item
+    // fragment.appendChild(li)
+   
+     const childNode= fragment.firstChild
+     console.log(item,childNode)
+     fragment.insertBefore(li,childNode)})
+     
+lista.appendChild(fragment)
